@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>App.js</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #808080;}
+.s4 { color: #e8bf6a;}
+.s5 { color: #bababa;}
+.s6 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+App.js</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">{ StatusBar } from </span><span class="s2">'expo-status-bar'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">React</span><span class="s0">, </span><span class="s1">{Component} from </span><span class="s2">'react'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">{ StyleSheet</span><span class="s0">, </span><span class="s1">Text</span><span class="s0">, </span><span class="s1">View</span><span class="s0">, </span><span class="s1">FlatList</span><span class="s0">,</span><span class="s1">ActivityIndicator</span><span class="s0">,</span>
+  <span class="s1">SafeAreaView</span><span class="s0">, </span><span class="s1">Button } from </span><span class="s2">'react-native'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">{ListItem</span><span class="s0">, </span><span class="s1">SearchBar} from </span><span class="s2">&quot;react-native-elements&quot;</span><span class="s0">;</span>
+
+
+<span class="s0">class </span><span class="s1">App </span><span class="s0">extends </span><span class="s1">Component {</span>
+    <span class="s1">constructor(props) {</span>
+        <span class="s0">super</span><span class="s1">(props)</span><span class="s0">;</span>
+
+        <span class="s0">this</span><span class="s1">.state = {</span>
+            <span class="s1">data: []</span><span class="s0">,</span>
+            <span class="s1">searchTxt: </span><span class="s0">null</span>
+        <span class="s1">}</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">componentDidMount() {</span>
+        <span class="s0">const </span><span class="s1">baseurl = </span><span class="s2">&quot;https://www.theaudiodb.com/api/v1/json/1/search.php?s=coldplay&quot;</span><span class="s0">;</span>
+        <span class="s3">//  const endurl = &quot;coldplay&quot;;</span>
+
+
+        <span class="s1">fetch(baseurl)</span>
+            <span class="s1">.then((body) =&gt;body.json())</span>
+            <span class="s1">.then((res) =&gt; {</span>
+                <span class="s0">this</span><span class="s1">.setState({ data: res})</span><span class="s0">;</span>
+            <span class="s1">})</span>
+    <span class="s1">}</span>
+
+
+
+    <span class="s1">render() {</span>
+        <span class="s0">return </span><span class="s1">(</span>
+            <span class="s4">&lt;View&gt;</span>
+                <span class="s1">{</span><span class="s0">this</span><span class="s1">.state.data.map(item =&gt; {</span>
+                <span class="s0">return</span><span class="s1">(</span>
+                    <span class="s4">&lt;View&gt;</span>
+                        <span class="s4">&lt;Text </span><span class="s5">style</span><span class="s2">=</span><span class="s1">{styles.title}</span><span class="s4">&gt;</span><span class="s1">{item.strArtist}</span><span class="s4">&lt;/Text&gt;</span>
+                    <span class="s4">&lt;/View&gt;</span>
+                <span class="s1">)</span>
+            <span class="s1">})}</span>
+            <span class="s4">&lt;/View&gt;</span>
+        <span class="s1">)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+<span class="s1">}</span>
+
+<span class="s0">const </span><span class="s1">styles = StyleSheet.create({</span>
+    <span class="s1">container: {</span>
+        <span class="s1">flex: </span><span class="s6">1</span><span class="s0">,</span>
+        <span class="s1">marginTop: StatusBar.currentHeight || </span><span class="s6">0</span><span class="s0">,</span>
+    <span class="s1">}</span><span class="s0">,</span>
+    <span class="s1">item: {</span>
+        <span class="s1">backgroundColor: </span><span class="s2">'#f9c2ff'</span><span class="s0">,</span>
+        <span class="s1">padding: </span><span class="s6">20</span><span class="s0">,</span>
+        <span class="s1">marginVertical: </span><span class="s6">8</span><span class="s0">,</span>
+        <span class="s1">marginHorizontal: </span><span class="s6">16</span><span class="s0">,</span>
+    <span class="s1">}</span><span class="s0">,</span>
+    <span class="s1">title: {</span>
+        <span class="s1">fontSize: </span><span class="s6">32</span><span class="s0">,</span>
+    <span class="s1">}</span><span class="s0">,</span>
+<span class="s1">})</span><span class="s0">;</span>
+
+<span class="s0">export default </span><span class="s1">App</span><span class="s0">;</span>
+
+</pre>
+</body>
+</html>
