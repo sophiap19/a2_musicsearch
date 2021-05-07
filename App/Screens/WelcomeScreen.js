@@ -17,8 +17,9 @@ function WelcomeScreen({navigation}) {
             <SearchBar placeholder="Search Here..."
                        lightTheme round editable={true}
                        value={search}
-                       navigation = {navigation.navigate("API", {artist: {search} })}
-                       onChangeText={search => setSearch(search)}
+                       onChangeText={(val) => { setSearch(val) }}
+                       onSubmitEditing={()=>console.log(`Sophia typed ${search}`)}
+                       //navigation = {navigation.navigate("API", {artist: {search} })}
             />
 
                 <Text>Sophia Pum 11910969</Text>
